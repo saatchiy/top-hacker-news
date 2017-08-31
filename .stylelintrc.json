@@ -1,0 +1,58 @@
+{
+	"rules": {
+		"at-rule-name-case": ["lower", {"severity": "warning"}],
+		"at-rule-name-space-after": ["always", {"severity": "warning"}],
+		"at-rule-semicolon-newline-after": ["always", {"severity": "warning"}],
+
+		"color-no-invalid-hex": true,
+
+		"block-closing-brace-newline-after": ["always", {"severity": "warning"}],
+		"block-closing-brace-newline-before": ["always", {"severity": "warning"}],
+		"block-no-single-line": [true, {"severity": "warning"}],
+		"block-opening-brace-newline-after": ["always", {"severity": "warning"}],
+		"block-opening-brace-space-before": ["always", {"severity": "warning"}],
+
+		"declaration-block-no-duplicate-properties": [true, {
+			"severity": "warning",
+			"ignore": "consecutive-duplicates"
+			}],
+		"declaration-block-no-ignored-properties": [true, {"severity": "warning"}],
+		"declaration-block-no-shorthand-property-overrides": [true, {"severity": "warning"}],
+		"declaration-block-semicolon-newline-after": ["always", {"severity": "warning"}],
+		"declaration-block-semicolon-space-before": ["never", {"severity": "warning"}],
+		"declaration-block-trailing-semicolon": ["always", {"severity": "warning"}],
+
+		"declaration-colon-space-after": ["always", {"severity": "warning"}],
+		"declaration-colon-space-before": ["never", {"severity": "warning"}],
+
+		"max-nesting-depth": [3, {"severity": "warning"}],
+
+		"no-extra-semicolons": true,
+
+		"property-case": ["lower", {"severity": "warning"}],
+
+		"string-quotes": ["single", {"severity": "warning"}],
+
+		"selector-max-compound-selectors": [3, {"severity": "warning"}],
+		"selector-pseudo-class-case": ["lower", {"severity": "warning"}],
+		"selector-pseudo-class-no-unknown": true,
+		"selector-pseudo-element-case": ["lower", {"severity": "warning"}],
+		"selector-pseudo-element-no-unknown": true,
+		"selector-type-case": ["lower", {"severity": "warning"}],
+		"selector-type-no-unknown": true,
+
+		"selector-list-comma-newline-after": ["always", {"severity": "warning"}],
+		"selector-list-comma-space-before": ["never", {"severity": "warning"}],
+
+		"time-no-imperceptible": [true, {"severity": "warning"}],
+
+		"unit-case": ["lower", {"severity": "warning"}],
+		"unit-no-unknown": true,
+
+		"value-keyword-case": ["lower", {"severity": "warning"}],
+
+		"value-list-comma-space-after": ["always", {"severity": "warning"}],
+		"value-list-comma-space-before": ["never", {"severity": "warning"}]
+
+	}
+}
