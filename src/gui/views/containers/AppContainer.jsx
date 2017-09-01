@@ -1,13 +1,16 @@
-import react from 'react';
+import * as React from 'react';
+import HomeContainer from 'gui/views/containers/HomeContainer';
 
 
-class AppContainer extends react.Component {
+class AppContainer extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        <HomeContainer app={this.props.app}/>
+        return(
+            <HomeContainer app={this.props.app}/>
+        );
     }
 }
 

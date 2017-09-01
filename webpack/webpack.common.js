@@ -8,13 +8,13 @@ const commonPaths = require("./common-paths");
 const config = {
     target: 'web',
     entry: {
-        'bundle': './src/index.jsx'
+        'bundle': './src/main.js'
     },
     entry: {
         polyfills: [
             'core-js/es6/set'
         ],
-        bundle: './app/src/index.jsx'
+        bundle: './app/src/main.js'
 
     },
     output: {

@@ -1,13 +1,13 @@
 import * as RequestTypes from 'core/dataretriever/calls/RequestTypes';
 import {ajax} from 'jquery';
 
-class ServerConnection {
+class ServerCommunicator {
     
     static executeCall(restCall) {
         return new Promise((resolve, reject) => {
             switch(restCall.getRequestType()) {
                 case RequestTypeEnum.GET:
-                    this.sendGetRequest(restCall, resolve, reject);
+                    this._sendGetRequest(restCall, resolve, reject);
             }
         });
     }
@@ -35,4 +35,4 @@ class ServerConnection {
     }
 }
 
-export default ServerConnection;
+export default ServerCommunicator;

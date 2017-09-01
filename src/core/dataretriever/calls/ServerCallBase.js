@@ -6,17 +6,16 @@ const API_VERSION = 'v0';
 class ServerCallBase {
 
     constructor(requestType, relativeURL) {
-        this.requestType = requestType;
-        this.relativeURL = relativeURL;
-        this.requestURL = BASE_URL + '/' + API_VERSION + '/' + this.relativeURL;
+        this._requestType = requestType;
+        this._requestURL = BASE_URL + '/' + API_VERSION + '/' + relativeURL;
     }
 
     getRequestType() {
-        return this.requestType;
+        return this._requestType;
     }
 
     getRequestURL() {
-        return this.requestURL;
+        return this._requestURL;
     }
 }
 

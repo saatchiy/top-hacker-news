@@ -1,5 +1,6 @@
 import * as React from 'react';
 import GetTopStoriesActionPayload from 'core/dataretriever/actions/GetTopStoriesActionPayload';
+import TopStoriesComponent from 'gui/views/components/TopStoriesComponent';
 
 
 class TopStoriesContainer extends React.Component {
@@ -13,7 +14,9 @@ class TopStoriesContainer extends React.Component {
     }
 
     render() {
-        <TopStoriesComponent />
+        return(
+            <TopStoriesComponent />
+        );
     }
 }
 

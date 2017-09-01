@@ -1,6 +1,8 @@
 'use strict';
 import {Dispatcher} from 'flux';
 import Stores from 'core/stores/Stores';
+import ActionManagers from 'core/actionmanagers/ActionManagers';
+
 
 class App {
     constructor() {
@@ -9,7 +11,8 @@ class App {
 
     _initApp() {
         this._dispatcher = new Dispatcher();
-        this._stores = new Stores();
+        let actionManagers = new ActionManagers(this._dispatcher);
+        this._stores = new Stores(this._dispatcher, actionManagers);
     }
 
     getDispatcher() {

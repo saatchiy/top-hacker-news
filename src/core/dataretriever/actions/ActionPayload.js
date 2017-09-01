@@ -8,11 +8,11 @@ export var ActionTypeEnum = {
 
 class ActionPayload {
     constructor(actionType) {
-        this.actionType = actionType;
+        this._actionType = actionType;
     }
 
     getActionType() {
-        return this.actionType;
+        return this._actionType;
     }
 }
 

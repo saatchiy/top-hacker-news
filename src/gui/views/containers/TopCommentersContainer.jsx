@@ -1,4 +1,5 @@
 import * as React from 'react';
+import TopCommentersComponent from 'gui/views/components/TopCommentersComponent';
 
 
 class TopCommentersContainer extends React.Component {
@@ -7,7 +8,9 @@ class TopCommentersContainer extends React.Component {
     }
 
     render() {
-        <TopCommentersComponent />
+        return(
+            <TopCommentersComponent />
+        );
     }
 }
 

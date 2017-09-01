@@ -1,12 +1,8 @@
 import StoryStore from 'core/stores/StoryStore';
 
 class Stores {
-    constructor() {
-        this._initStores();
-    }
-
-    _initStores() {
-        this._storyStore = new StoryStore();
+    constructor(dispatcher, actionManagers) {
+        this._storyStore = new StoryStore(dispatcher, actionManagers.getStoryActionManager());
     }
 
     getStoryStore() {
