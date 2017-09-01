@@ -1,12 +1,7 @@
 
-const BASE_URL = 'https://hacker-news.firebaseio.com';
+const BASE_URL = encodeURI('https://hacker-news.firebaseio.com');
 const API_VERSION = 'v0';
 
-export var RequestTypeEnum = {
-    GET: 1,
-    PUT: 2,
-    POST: 3
-}
 
 class ServerCallBase {
 

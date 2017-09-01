@@ -1,9 +1,11 @@
 import ServerCallBase from 'core/dataretriever/calls/ServerCallBase';
-import {RequestTypeEnum} from 'core/dataretriever/calls/ServerCallBase';
+import * as RequestTypes from 'core/dataretriever/calls/RequestTypes';
 
 class GetTopStoriesCall extends ServerCallBase {
     constructor() {
         let reqUrl = 'topstories.json';
-        super(RequestTypeEnum.GET, reqUrl);
+        super(RequestTypes.GET, reqUrl);
     }
 }
+
+export default GetTopStoriesCall;

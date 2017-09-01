@@ -1,19 +1,37 @@
-import {RequestTypeEnum} from 'core/dataretriever/calls/ServerCallBase';
+import * as RequestTypes from 'core/dataretriever/calls/RequestTypes';
+import {ajax} from 'jquery';
 
 class ServerConnection {
-    constructor() {
-
+    
+    static executeCall(restCall) {
+        return new Promise((resolve, reject) => {
+            switch(restCall.getRequestType()) {
+                case RequestTypeEnum.GET:
+                    this.sendGetRequest(restCall, resolve, reject);
+            }
+        });
     }
 
-    executeCall(restCall) {
-        switch(restCall.getRequestType()) {
-            case RequestTypeEnum.GET:
-                this.sendGetRequest(restCall);
-        }
-    }
+    static _sendGetRequest(restCall, resolve, reject) {
 
-    sendGetRequest(restCall) {
+        let success = (data) => {
+            resolve(data);
+        };
 
+        let error = (jqXhr, textStatus, errorThrown) => {
+            reject(new Error('Failed to get the response from the server.'));
+        };
+
+        ajax({
+            url: restCall.getRequestURL(),
+            type: restCall.getRequestType(),
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8',
+            cache: false,
+            success: success,
+            error: error
+
+        });
     }
 }
 

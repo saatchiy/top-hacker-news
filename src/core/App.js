@@ -20,3 +20,5 @@ class App {
         return this._stores;
     }
 }
+
+export default App;
