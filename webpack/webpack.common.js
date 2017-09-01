@@ -14,7 +14,7 @@ const config = {
         polyfills: [
             'core-js/es6/set'
         ],
-        bundle: './app/src/main.js'
+        bundle: './src/main.js'
 
     },
     output: {

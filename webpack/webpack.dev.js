@@ -8,7 +8,6 @@ const commonPaths = require("./common-paths");
 const webpack = require('webpack');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var srcPath = path.resolve(__dirname, 'src');
 
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // The public URL is available as %PUBLIC_URL% in index.html, e.g.:

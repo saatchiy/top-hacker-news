@@ -6,7 +6,7 @@ class ServerCommunicator {
     static executeCall(restCall) {
         return new Promise((resolve, reject) => {
             switch(restCall.getRequestType()) {
-                case RequestTypeEnum.GET:
+                case RequestTypes.GET:
                     this._sendGetRequest(restCall, resolve, reject);
             }
         });

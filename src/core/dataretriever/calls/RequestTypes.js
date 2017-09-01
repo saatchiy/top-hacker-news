@@ -1,3 +1,3 @@
 export const GET = 'GET';
-export const GET = 'PUT';
-export const GET = 'POST';
+export const PUT = 'PUT';
+export const POST = 'POST';

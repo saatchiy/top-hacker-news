@@ -1,9 +1,10 @@
-import {EventEmitter} from 'flux';
+import {EventEmitter} from 'events';
 import * as ActionTypes from 'core/dataretriever/actions/ActionTypes';
 
 class StoryStore extends EventEmitter {
     
     constructor(dispatcher, storyActionManager) {
+        super();
         this._initStore(dispatcher);
         this._stories = new Map();
         this._storyActionManager = storyActionManager;
@@ -15,9 +16,9 @@ class StoryStore extends EventEmitter {
 
     _handleActions(payload) {
         switch(payload.getActionType()) {
-            case ActionTypeEnum.GET_TOP_STORIES:
+            case ActionTypes.GET_TOP_STORIES:
                 this._logAction(payload);
-                this._loadTopStories();
+                this._loadTopStories(payload);
                 break;
         }
     }
