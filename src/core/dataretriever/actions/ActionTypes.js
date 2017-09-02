@@ -1,6 +1,9 @@
 // Top stories
 export const GET_TOP_STORIES = 'GET_TOP_STORIES';
 export const TOP_STORY_IDS_LOADED = 'TOP_STORY_IDS_LOADED';
+
+// Item
+export const STORIES_LOADED = 'STORIES_LOADED';
 export const GET_ITEM = 'GET_ITEM';
 
 // User
