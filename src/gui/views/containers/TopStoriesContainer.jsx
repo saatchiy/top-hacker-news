@@ -1,5 +1,5 @@
 import * as React from 'react';
-import GetTopStoriesActionPayload from 'core/dataretriever/actions/GetTopStoriesActionPayload';
+import LoadTopStoryIDsActionPayload from 'core/dataretriever/actions/LoadTopStoryIDsActionPayload';
 import TopStoriesComponent from 'gui/views/components/TopStoriesComponent';
 
 
@@ -9,8 +9,8 @@ class TopStoriesContainer extends React.Component {
     }
 
     componentDidMount() {
-        let getTopStoriesAction = new GetTopStoriesActionPayload();
-        this.props.app.getDispatcher().dispatch(getTopStoriesAction);
+        let loadTopIDsAction = new LoadTopStoryIDsActionPayload();
+        this.props.app.getDispatcher().dispatch(loadTopIDsAction);
     }
 
     render() {

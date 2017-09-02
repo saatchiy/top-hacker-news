@@ -3,7 +3,7 @@ import ActionPayload from 'core/dataretriever/actions/ActionPayload';
 
 const NUMBER_OF_TOP_STORIES = 30;
 
-class GetTopStoriesActionPayload extends ActionPayload {
+class LoadTopStoryIDsActionPayload extends ActionPayload {
     constructor() {
         super(ActionTypes.GET_TOP_STORIES);
 
@@ -15,4 +15,4 @@ class GetTopStoriesActionPayload extends ActionPayload {
     }
 }
 
-export default GetTopStoriesActionPayload;
+export default LoadTopStoryIDsActionPayload;

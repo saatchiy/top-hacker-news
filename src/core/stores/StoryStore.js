@@ -5,20 +5,25 @@ class StoryStore extends EventEmitter {
     
     constructor(dispatcher, storyActionManager) {
         super();
-        this._initStore(dispatcher);
+        this._dispatchToken = dispatcher.register(this._handleActions.bind(this));
+        this._topIDs = [];
         this._stories = new Map();
         this._storyActionManager = storyActionManager;
     }
 
-    _initStore(dispatcher) {
-        dispatcher.register(this._handleActions.bind(this));
+    getStoreDispatchToken() {
+        return this._dispatchToken;
     }
 
     _handleActions(payload) {
         switch(payload.getActionType()) {
             case ActionTypes.GET_TOP_STORIES:
                 this._logAction(payload);
-                this._loadTopStories(payload);
+                this._loadTopStoryIDs(payload);
+                break;
+            case ActionTypes.TOP_STORY_IDS_LOADED:
+                this._logAction(payload);
+                this._handleTopStoryIDsLoaded(payload);
                 break;
         }
     }
@@ -27,8 +32,19 @@ class StoryStore extends EventEmitter {
         console.log('StoryStore:', 'action received:', payload.getActionType())
     }
 
-    _loadTopStories(payload) {
-        this._storyActionManager.loadTopStories(payload.getNumberOfStories());
+    _loadTopStoryIDs(payload) {
+        this._storyActionManager.loadTopStoryIDs(payload.getNumberOfStories());
+    }
+
+    /**
+     * Receives top story ids and loads each story
+     * 
+     * @param {TopStoryIDsLoadedActionPayload} payload 
+     * @memberof StoryStore
+     */
+    _handleTopStoryIDsLoaded(payload) {
+        this.topIDs = payload.getIDsJSON();
+        
     }
 
 }
