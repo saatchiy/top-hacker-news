@@ -1,4 +1,4 @@
-import comm from 'core/dataretriever/ServerCommunicator';
+import Comm from 'core/dataretriever/ServerCommunicator';
 import GetTopStoriesCall from 'core/dataretriever/calls/GetTopStoriesCall';
 import GetItemCall from 'core/dataretriever/calls/GetItemCall';
 
@@ -26,7 +26,7 @@ class StoryActionManager {
      * @memberof StoryActionManager
      */
     loadTopStoryIDs(numberOfStories) {
-        comm.executeCall(new GetTopStoriesCall()).then((topStoriesJSON) => {
+        Comm.executeCall(new GetTopStoriesCall()).then((topStoriesJSON) => {
             console.log(CLASS_NAME, 'Top stories ids loaded successfully.');
             this._dispatcher.dispatch(new TopStoryIDsLoadedActionPayload(topStoriesJSON));
         }).catch((error) => {
@@ -81,7 +81,7 @@ class StoryActionManager {
         console.log(CLASS_NAME, 'loading story:', id);
 
         return new Promise((resolve, reject) => {
-            comm.executeCall(new GetItemCall(id)).then((storyJSON) => {
+            Comm.executeCall(new GetItemCall(id)).then((storyJSON) => {
                 console.log(CLASS_NAME, 'loaded successfully. story:', id);
                 resolve(storyJSON);
             }).catch((error) => {
