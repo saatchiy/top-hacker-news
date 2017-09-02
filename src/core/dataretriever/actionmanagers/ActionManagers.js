@@ -1,4 +1,4 @@
-import StoryActionManager from 'core/actionmanagers/StoryActionManager';
+import StoryActionManager from 'core/dataretriever/actionmanagers/StoryActionManager';
 
 
 class ActionManagers {

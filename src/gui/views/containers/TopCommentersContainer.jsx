@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TopCommentersComponent from 'gui/views/components/TopCommentersComponent';
+import TopCommentersComponent from 'gui/views/components/topcommenters/TopCommentersComponent';
 
 
 class TopCommentersContainer extends React.Component {

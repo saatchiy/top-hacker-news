@@ -67,7 +67,7 @@ class StoryActionManager {
         }).catch((error) => {
             console.log(CLASS_NAME, 'failed to load the story:', failedStoryId);
             this._dispatcher.dispatch(new ErrorOccurredActionPayload(error))
-        })
+        });
     }
 
     /**

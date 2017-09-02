@@ -1,7 +1,7 @@
 'use strict';
 import {Dispatcher} from 'flux';
 import Stores from 'core/stores/Stores';
-import ActionManagers from 'core/actionmanagers/ActionManagers';
+import ActionManagers from 'core/dataretriever/actionmanagers/ActionManagers';
 
 
 class App {

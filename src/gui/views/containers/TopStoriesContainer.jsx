@@ -1,6 +1,6 @@
 import * as React from 'react';
 import LoadTopStoryIDsActionPayload from 'core/dataretriever/actions/LoadTopStoryIDsActionPayload';
-import TopStoriesComponent from 'gui/views/components/TopStoriesComponent';
+import TopStoriesComponent from 'gui/views/components/topstories/TopStoriesComponent';
 
 import * as ChangeConstants from 'core/stores/ChangeConstants';
 
@@ -12,26 +12,33 @@ class TopStoriesContainer extends React.Component {
     }
 
     _initState() {
-        this.setState({
+        this.state = {
             stories: null
-        })
+        };
     }
 
     componentDidMount() {
-        let app = this.props.add;
+        let app = this.props.app;
 
         let storyStore = app.getStores().getStoryStore();
-        storyStore.addEventListener(ChangeConstants.STORIES_LOADED, this._handleStoriesLoaded.bind(this));
+        storyStore.addListener(ChangeConstants.STORIES_LOADED, this._handleStoriesLoaded.bind(this));
 
         let loadTopIDsAction = new LoadTopStoryIDsActionPayload();
         app.getDispatcher().dispatch(loadTopIDsAction);
+    }
+
+    componentWillUnmount() {
+        let app = this.props.app;
+        
+        let storyStore = app.getStores().getStoryStore();
+        storyStore.removeListener(ChangeConstants.STORIES_LOADED, this._handleStoriesLoaded);
     }
 
     _handleStoriesLoaded() {
         let app = this.props.app;
         let storyStore = app.getStores().getStoryStore();
         let topStories = storyStore.getTopStories();
-        this.state({
+        this.setState({
             stories: topStories
         });
     }

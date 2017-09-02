@@ -1,0 +1,11 @@
+@import 'colors';
+@import 'layout';
+
+// Skins
+@import './skin/header-skin';
+
+// App
+@import '../views/components/home/App';
+
+// Home
+@import '../views/components/home/HeaderComponent';

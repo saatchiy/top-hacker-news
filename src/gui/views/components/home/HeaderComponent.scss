@@ -1,0 +1,15 @@
+.app-header {
+    @include header-skin;
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    top: 0;
+    left: 0;
+
+    .app-title {
+        position: relative;
+        bottom: 2 * $empty-space;
+    }
+}
