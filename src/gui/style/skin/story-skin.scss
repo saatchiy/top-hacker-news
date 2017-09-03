@@ -1,0 +1,9 @@
+@mixin story-skin {
+    border: solid 2px $story-title-color;
+
+    margin: $empty-space 0;
+}
+
+@mixin story-title-skin {
+    margin: $empty-space;
+}

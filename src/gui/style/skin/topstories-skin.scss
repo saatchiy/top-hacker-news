@@ -1,0 +1,12 @@
+@mixin top-stories-skin {
+    padding-top: 2 * $empty-space;
+    padding-left: 4 * $empty-space;
+    padding-right: 2 * $empty-space;
+}
+
+@mixin top-stories-header-skin {
+    font-size: 200%;
+    font-weight: 500;
+    color: $top-stories-title-color;
+    padding: 2 * $empty-space 0;
+}

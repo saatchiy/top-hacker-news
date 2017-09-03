@@ -1,8 +1,7 @@
 @mixin header-skin {
     background: $header-back-color;
     color: $header-color;
-    font-family: sans-serif;
-    font-size: -webkit-xxx-large;
+    font-size: 300%;
     height: $header-height;
     width: 100%;
 }

@@ -1,6 +1,7 @@
 import {EventEmitter} from 'events';
 import * as ActionTypes from 'core/dataretriever/actions/ActionTypes';
 import * as ChangeConstants from 'core/stores/ChangeConstants';
+import Story from 'core/data/Story';
 
 const NUMBER_OF_TOP_STORIES = 30;
 const CLASS_NAME = 'StoreStore:';
@@ -61,16 +62,20 @@ class StoryStore extends EventEmitter {
         let storiesJSON = payload.getStoriesJSON();
         
         // Create Story objects and add them to the map
-        for(storyJSON of storiesJSON) {
-            this._stories.set(storyJSON.id, new Story(storyJson));
+        for(let storyJSON of storiesJSON) {
+            this._stories.set(storyJSON.id, new Story(storyJSON));
         }
 
         // Emitting message to containers
-        this._emitStoriesLoaded();
+        this._emitTopStoriesLoaded();
     }
 
     getTopStories() {
         return Array.from(this._stories.values());
+    }
+
+    getNumberOfTopStories() {
+        return NUMBER_OF_TOP_STORIES;
     }
 
     _emitTopStoriesLoaded() {

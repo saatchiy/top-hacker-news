@@ -1,0 +1,7 @@
+.story {
+    @include story-skin;
+
+    .story-title {
+        @include story-title-skin;
+    }
+}

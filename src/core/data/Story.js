@@ -1,4 +1,5 @@
-import ItemTypes from 'core/data/ItemTypes';
+import Item from 'core/data/Item';
+import * as ItemTypes from 'core/data/ItemTypes';
 
 
 /**

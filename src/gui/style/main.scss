@@ -1,11 +1,21 @@
 @import 'colors';
 @import 'layout';
+@import 'global';
 
 // Skins
 @import './skin/header-skin';
+@import './skin/app-skin';
+@import './skin/topstories-skin';
+@import './skin/story-skin';
 
 // App
 @import '../views/components/home/App';
 
 // Home
 @import '../views/components/home/HeaderComponent';
+
+// Top Stories
+@import '../views/components/topstories/TopStoriesComponent';
+
+// Story
+@import '../views/components/story/StoryComponent';

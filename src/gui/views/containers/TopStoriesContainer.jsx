@@ -46,6 +46,10 @@ class TopStoriesContainer extends React.Component {
     render() {
         let stories = this.state.stories;
 
+        if(!stories) {
+            return null;
+        }
+        
         return(
             <TopStoriesComponent stories={stories}/>
         );

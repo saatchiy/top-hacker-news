@@ -45,7 +45,7 @@ module.exports = {
         hot: true, // enable HMR on the server
         contentBase: commonPaths.contentBasePath, // match the output path
         publicPath: '/', // match the output `publicPath`
-        //host:"0.0.0.0", // Enable to integrate with Docker
+        host:"0.0.0.0", // Enable to integrate with Docker
         port: 3000,
         historyApiFallback: true,
         // All the stats options here: https://webpack.js.org/configuration/stats/
