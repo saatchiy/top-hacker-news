@@ -7,6 +7,7 @@
 @import './skin/app-skin';
 @import './skin/topstories-skin';
 @import './skin/story-skin';
+@import './skin/topcommenters-skin';
 
 // App
 @import '../views/components/home/App';
@@ -16,6 +17,10 @@
 
 // Top Stories
 @import '../views/components/topstories/TopStoriesComponent';
+@import '../views/components/topstories/RefreshButtonComponent';
+
+// Top Commenters
+@import '../views/components/topcommenters/TopCommentersComponent';
 
 // Story
 @import '../views/components/story/StoryComponent';

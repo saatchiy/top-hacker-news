@@ -5,3 +5,8 @@
     height: $header-height;
     width: 100%;
 }
+
+@mixin inner-header-skin {
+    margin-left: 4 * $empty-space;
+    margin-right: 2 * $empty-space;
+}

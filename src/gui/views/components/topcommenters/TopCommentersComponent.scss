@@ -1,0 +1,14 @@
+.top-commenters {
+    @include tc-skin;
+
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+
+    .tc-header-container {
+        @include tc-header-skin;
+
+        display: flex;
+        flex-direction: row;
+    }
+}

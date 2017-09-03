@@ -13,7 +13,10 @@ class HomeContainer extends React.Component {
         return (
             <div className='home'>
                 <HeaderComponent />
-                <TopStoriesContainer app={this.props.app}/>
+                <div className='home-body'>
+                    <TopStoriesContainer app={this.props.app}/>
+                    <TopCommentersContainer app={this.props.app}/>
+                </div>
             </div>
         );
     }

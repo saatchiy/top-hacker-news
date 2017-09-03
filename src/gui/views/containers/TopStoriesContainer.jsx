@@ -38,7 +38,6 @@ class TopStoriesContainer extends React.Component {
         this.setState({
             loading: true
         });
-
     }
 
     _handleStoriesLoaded() {

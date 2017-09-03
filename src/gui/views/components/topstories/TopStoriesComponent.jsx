@@ -1,5 +1,6 @@
 import * as React from 'react';
 import StoryComponent from 'gui/views/components/story/StoryComponent';
+import RefreshButtonComponent from 'gui/views/components/topstories/RefreshButtonComponent';
 
 
 class TopStoriesComponent extends React.Component {
@@ -12,11 +13,6 @@ class TopStoriesComponent extends React.Component {
     }
 
     render() {
-        let loading = this.props.loading;
-        let spinnerClassName = 'fa fa-refresh';
-        if(loading) {
-            spinnerClassName += ' spin';
-        }
 
         let stories = this.props.stories;
 
@@ -48,6 +44,8 @@ class TopStoriesComponent extends React.Component {
             );
         }
 
+        let actions = this.props.actions;
+
         return(
             <div className='top-stories'>
                 <header className='top-stories-header'>
@@ -55,9 +53,7 @@ class TopStoriesComponent extends React.Component {
                         <div>
                             {headerText}
                         </div>
-                        <div className='refresh-btn' onClick={this._handleRefreshClick.bind(this)}>
-                            <i className={spinnerClassName} aria-hidden='true'/>
-                        </div>
+                        <RefreshButtonComponent loading={this.props.loading} isSpinner={false} refresh={actions.refreshTopStories}/>
                     </div>
                 </header>
                 {storiesSection}

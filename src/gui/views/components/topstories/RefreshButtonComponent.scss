@@ -1,0 +1,14 @@
+.refresh-btn {
+    @include top-stories-refresh-btn-skin;
+
+    display: flex;
+    align-items: center;
+
+    .spin {
+        animation: fa-spin 750ms infinite linear;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}

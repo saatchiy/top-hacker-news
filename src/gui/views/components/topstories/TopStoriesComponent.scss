@@ -1,11 +1,11 @@
 .top-stories {
-    @include top-stories-skin;
+    @include inner-header-skin;
 
     display: flex;
     flex-direction: column;
-    position: relative;
+    overflow-y: hidden;
     height: 100%;
-    overflow-y: auto;
+    width: 100%;
 
     .top-stories-header {
         @include top-stories-header-skin;
@@ -14,27 +14,14 @@
             display: flex;
             position: relative;
         }
-
-        .refresh-btn {
-            @include top-stories-refresh-btn-skin;
-
-            display: flex;
-            align-items: center;
-
-            .spin {
-                animation: fa-spin 500ms infinite linear;
-            }
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
     }
 
     .ts-list-container {
 
         display: flex;
         position: relative;
+        overflow-y: auto;
+        height: 100%;
 
         .top-stories-list {
             width: 100%

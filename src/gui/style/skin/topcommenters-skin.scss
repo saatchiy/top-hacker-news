@@ -1,0 +1,12 @@
+@mixin tc-skin {
+    border: solid 2px $border-color;
+    margin-top: $large-space;
+    margin-left: $large-space;
+}
+
+@mixin tc-header-skin {
+    background: $header-back-color;
+    color: $header-color;
+    font-size: 130%;
+    padding: $large-space;
+}

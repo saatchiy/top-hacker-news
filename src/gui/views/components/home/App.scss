@@ -5,4 +5,11 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
+
+    .home-body {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        height: 100%
+    }
 }
