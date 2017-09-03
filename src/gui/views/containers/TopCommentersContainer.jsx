@@ -20,7 +20,7 @@ class TopCommentersContainer extends React.Component {
     componentDidMount() {
         let app = this.props.app;
         let storyStore = app.getStores().getStoryStore();
-        storyStore.addListener(ChangeConstants.COMMENTERS_LOADED, this._handleCommentersLoaded.bind(this));
+        storyStore.addListener(ChangeConstants.TOP_COMMENTERS_LOADED, this._handleCommentersLoaded.bind(this));
 
         this.setState({
             loading: true
@@ -30,7 +30,7 @@ class TopCommentersContainer extends React.Component {
     componentWillUnmount() {
         let app = this.props.app;
         let storyStore = app.getStores().getStoryStore();
-        storyStore.removeListener(ChangeConstants.COMMENTERS_LOADED, this._handleCommentersLoaded);
+        storyStore.removeListener(ChangeConstants.TOP_COMMENTERS_LOADED, this._handleCommentersLoaded);
     }
 
     _handleCommentersLoaded() {

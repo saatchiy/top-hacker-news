@@ -10,3 +10,11 @@
     font-size: 130%;
     padding: $large-space;
 }
+
+@mixin commenter-skin {
+    border: solid 2px $app-back-color;
+    
+    margin: $empty-space 0;
+    background-color: $story-back-color;
+    color: $story-color;
+}

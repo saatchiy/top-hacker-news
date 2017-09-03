@@ -14,9 +14,9 @@ class TopCommentersComponent extends React.Component {
         let headerText = 'Top 10 commenters';
 
         if(commenters) {
-            let commenterComponents = commenters.map((user) => {
+            let commenterComponents = commenters.map((commenter) => {
                 return(
-                    <CommenterComponent user={user}/>
+                    <CommenterComponent commenter={commenter}/>
                 );
             });
 

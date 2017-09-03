@@ -1,0 +1,22 @@
+.commenter {
+    @include commenter-skin;
+
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+
+    .user-id {
+        display: flex;
+        right: 0;
+
+        i {
+            margin-left: $empty-space;
+            margin-right: $empty-space;
+        }
+    }
+
+    .comment-count {
+        @include story-title-skin;
+    }
+}

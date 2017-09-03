@@ -38,7 +38,11 @@ class Item {
     }
 
     getCommentsIds() {
-        return this._commentsIds;
+        if(this._commentsIds) {
+            return this._commentsIds;
+        }
+        
+        return [];
     }
 
     isDead() {
