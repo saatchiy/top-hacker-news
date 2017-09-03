@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LoadTopStoryIDsActionPayload from 'core/dataretriever/actions/LoadTopStoryIDsActionPayload';
+import LoadTopStoriesActionPayload from 'core/dataretriever/actions/LoadTopStoriesActionPayload';
 import TopStoriesComponent from 'gui/views/components/topstories/TopStoriesComponent';
 
 import * as ChangeConstants from 'core/stores/ChangeConstants';
@@ -13,7 +13,8 @@ class TopStoriesContainer extends React.Component {
 
     _initState() {
         this.state = {
-            stories: null
+            stories: null,
+            loading: false
         };
     }
 
@@ -23,15 +24,21 @@ class TopStoriesContainer extends React.Component {
         let storyStore = app.getStores().getStoryStore();
         storyStore.addListener(ChangeConstants.STORIES_LOADED, this._handleStoriesLoaded.bind(this));
 
-        let loadTopIDsAction = new LoadTopStoryIDsActionPayload();
-        app.getDispatcher().dispatch(loadTopIDsAction);
+        this._loadTopStories();
     }
 
     componentWillUnmount() {
-        let app = this.props.app;
-        
-        let storyStore = app.getStores().getStoryStore();
+        let storyStore = this.props.app.getStores().getStoryStore();
         storyStore.removeListener(ChangeConstants.STORIES_LOADED, this._handleStoriesLoaded);
+    }
+
+    _loadTopStories() {
+        let loadTopIDsAction = new LoadTopStoriesActionPayload();
+        this.props.app.getDispatcher().dispatch(loadTopIDsAction);
+        this.setState({
+            loading: true
+        });
+
     }
 
     _handleStoriesLoaded() {
@@ -39,19 +46,21 @@ class TopStoriesContainer extends React.Component {
         let storyStore = app.getStores().getStoryStore();
         let topStories = storyStore.getTopStories();
         this.setState({
-            stories: topStories
+            stories: topStories,
+            loading: false
         });
     }
 
     render() {
         let stories = this.state.stories;
+        let loading = this.state.loading;
 
-        if(!stories) {
-            return null;
+        let actions = {
+            refreshTopStories: this._loadTopStories.bind(this)
         }
         
         return(
-            <TopStoriesComponent stories={stories}/>
+            <TopStoriesComponent loading={loading} stories={stories} actions={actions}/>
         );
     }
 }

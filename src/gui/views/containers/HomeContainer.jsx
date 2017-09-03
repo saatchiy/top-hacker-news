@@ -14,7 +14,6 @@ class HomeContainer extends React.Component {
             <div className='home'>
                 <HeaderComponent />
                 <TopStoriesContainer app={this.props.app}/>
-                <TopCommentersContainer app={this.props.app}/>
             </div>
         );
     }

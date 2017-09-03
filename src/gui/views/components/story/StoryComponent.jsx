@@ -9,12 +9,19 @@ class StoryComponent extends React.Component {
     render() {
         let story = this.props.story;
         let title = story.getTitle();
+        let author = story.getAuthor();
 
         return(
             <div className='story'>
-                <div className='story-title'>
+                <span className='story-title'>
                     {title}
-                </div>
+                </span>
+                <span className='story-author'>
+                    <i className='fa fa-user-circle' />
+                    <div>
+                        {author}
+                    </div>
+                </span>
             </div>
         );
     }

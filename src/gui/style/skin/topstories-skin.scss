@@ -7,6 +7,11 @@
 @mixin top-stories-header-skin {
     font-size: 200%;
     font-weight: 500;
-    color: $top-stories-title-color;
+    color: $top-stories-header-title-color;
     padding: 2 * $empty-space 0;
+}
+
+@mixin top-stories-refresh-btn-skin {
+    font-size: smaller;
+    margin: 0 $empty-space;
 }

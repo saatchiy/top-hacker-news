@@ -41,6 +41,11 @@ class StoryStore extends EventEmitter {
         console.log(CLASS_NAME, 'action received:', payload.getActionType())
     }
 
+    _flush() {
+        this._topIDs = [];
+        this._stories = new Map();
+    }
+
     _loadTopStoryIDs(payload) {
         console.log(CLASS_NAME, 'loading top story ids.')
         this._storyActionManager.loadTopStoryIDs(NUMBER_OF_TOP_STORIES);
@@ -54,6 +59,10 @@ class StoryStore extends EventEmitter {
      */
     _handleTopStoryIDsLoaded(payload) {
         console.log(CLASS_NAME, 'loading top stories');
+
+        // flushing old data before loading new stories
+        this._flush();
+
         this.topIDs = payload.getIDsJSON();
         this._storyActionManager.loadStories(this.topIDs.slice(0, NUMBER_OF_TOP_STORIES));
     }
@@ -66,7 +75,7 @@ class StoryStore extends EventEmitter {
             this._stories.set(storyJSON.id, new Story(storyJSON));
         }
 
-        // Emitting message to containers
+        console.log(CLASS_NAME, 'emitting to containers: top stories loaded');
         this._emitTopStoriesLoaded();
     }
 

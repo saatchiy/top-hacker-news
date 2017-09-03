@@ -1,7 +1,28 @@
 .story {
     @include story-skin;
 
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+
+    
     .story-title {
         @include story-title-skin;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 50%;
+    }
+
+    .story-author {
+        display: flex;
+        left: 50%;
+
+        i {
+            margin-left: 2 * $empty-space;
+            margin-right: $empty-space;
+        }
     }
 }

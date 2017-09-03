@@ -30,7 +30,7 @@ class Item {
     }
 
     getAuthor() {
-        return this._author;
+        return this._authorId;
     }
 
     getCreationTime() {

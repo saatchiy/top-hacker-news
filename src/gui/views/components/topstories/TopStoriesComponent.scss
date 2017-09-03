@@ -16,7 +16,14 @@
         }
 
         .refresh-btn {
-            margin: 0 $empty-space;
+            @include top-stories-refresh-btn-skin;
+
+            display: flex;
+            align-items: center;
+
+            .spin {
+                animation: fa-spin 500ms infinite linear;
+            }
 
             &:hover {
                 cursor: pointer;
@@ -30,7 +37,7 @@
         position: relative;
 
         .top-stories-list {
-            
+            width: 100%
         }
     }
     

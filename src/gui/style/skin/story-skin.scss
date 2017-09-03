@@ -1,7 +1,10 @@
 @mixin story-skin {
-    border: solid 2px $story-title-color;
+    border: solid 2px $story-border-color;
 
     margin: $empty-space 0;
+    height: 12%;
+    background-color: $story-back-color;
+    color: $story-color;
 }
 
 @mixin story-title-skin {
