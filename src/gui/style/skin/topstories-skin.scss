@@ -3,9 +3,14 @@
     font-size: 200%;
     font-weight: 500;
     color: $top-stories-header-title-color;
-    padding: 2 * $empty-space 0;
+    padding: 5 * $empty-space 0 $large-space 0;
 }
 
 @mixin top-stories-refresh-btn-skin {
     margin: 0 $empty-space;
+}
+
+@mixin creation-date-skin {
+    font-size: 85%;
+    color: $light-font-color;
 }

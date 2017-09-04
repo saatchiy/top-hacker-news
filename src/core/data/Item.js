@@ -12,7 +12,7 @@ class Item {
         this._type = itemType;
         this._deleted = itemJSON.deleted;
         this._authorId = itemJSON.by;
-        this._time = new Date(itemJSON.time);
+        this._time = new Date(itemJSON.time * 1000);
         this._commentIds = itemJSON.kids;
         this._dead = itemJSON.dead;
     }

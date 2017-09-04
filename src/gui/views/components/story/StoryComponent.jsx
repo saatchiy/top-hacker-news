@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import UserIdComponent from 'gui/views/components/common/UserIdComponent';
 
 class StoryComponent extends React.Component {
     constructor(props) {
@@ -10,18 +10,23 @@ class StoryComponent extends React.Component {
         let story = this.props.story;
         let title = story.getTitle();
         let author = story.getAuthor();
+        let creationDate = story.getCreationTime();
 
         return(
             <div className='story'>
                 <span className='story-title'>
                     {title}
                 </span>
-                <span className='story-author'>
-                    <i className='fa fa-user-circle' />
-                    <div>
-                        {author}
+                <div className='additional-info'>
+                    <div className='user-id-container'>
+                        <UserIdComponent userId={author}/>
                     </div>
-                </span>
+                    <div className='creation-date'>
+                        <span>
+                            {creationDate}
+                        </span>
+                    </div>
+                </div>
             </div>
         );
     }

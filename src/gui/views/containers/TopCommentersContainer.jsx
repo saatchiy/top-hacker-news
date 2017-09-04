@@ -22,15 +22,17 @@ class TopCommentersContainer extends React.Component {
         let storyStore = app.getStores().getStoryStore();
         storyStore.addListener(ChangeConstants.TOP_COMMENTERS_LOADED, this._handleCommentersLoaded.bind(this));
 
-        this.setState({
-            loading: true
-        });
+        let guiStore = app.getStores().getGUIStore();
+        guiStore.addListener(ChangeConstants.VIEW_STATE_CHANGED, this._handleViewStateChanged.bind(this));
     }
 
     componentWillUnmount() {
         let app = this.props.app;
         let storyStore = app.getStores().getStoryStore();
         storyStore.removeListener(ChangeConstants.TOP_COMMENTERS_LOADED, this._handleCommentersLoaded);
+
+        let guiStore = app.getStores().getGUIStore();
+        guiStore.removeListener(ChangeConstants.VIEW_STATE_CHANGED, this._handleViewStateChanged);
     }
 
     _handleCommentersLoaded() {
@@ -42,6 +44,15 @@ class TopCommentersContainer extends React.Component {
         this.setState({
            loading: false,
            commenters: commenters 
+        });
+    }
+
+    _handleViewStateChanged() {
+        let app = this.props.app;
+        let guiStore = app.getStores().getGUIStore();
+        let loading = guiStore.isCommentersLoading();
+        this.setState({
+            loading: loading
         });
     }
 

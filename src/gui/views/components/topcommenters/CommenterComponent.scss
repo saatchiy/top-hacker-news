@@ -6,17 +6,19 @@
     position: relative;
     align-items: center;
 
-    .user-id {
-        display: flex;
-        right: 0;
-
-        i {
-            margin-left: $empty-space;
-            margin-right: $empty-space;
-        }
+    .user-id-container {
+        width: 100%;
     }
 
     .comment-count {
         @include story-title-skin;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        div, i {
+            margin-left: $empty-space;
+        }
     }
 }

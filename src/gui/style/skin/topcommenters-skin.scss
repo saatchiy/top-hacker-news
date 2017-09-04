@@ -1,20 +1,19 @@
 @mixin tc-skin {
-    border: solid 2px $border-color;
-    margin-top: $large-space;
+    border: solid 1px $border-color;
+    margin-top: 12 * $empty-space;
     margin-left: $large-space;
 }
 
 @mixin tc-header-skin {
-    background: $header-back-color;
-    color: $header-color;
+    background: $tc-header-back-color;
+    color: $tc-header-color;
     font-size: 130%;
     padding: $large-space;
 }
 
 @mixin commenter-skin {
-    border: solid 2px $app-back-color;
+    border: solid 1px $app-back-color;
     
-    margin: $empty-space 0;
     background-color: $story-back-color;
     color: $story-color;
 }

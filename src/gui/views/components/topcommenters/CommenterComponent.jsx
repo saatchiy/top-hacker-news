@@ -1,4 +1,5 @@
 import * as React from 'react';
+import UserIdComponent from 'gui/views/components/common/UserIdComponent';
 
 
 class CommenterComponent extends React.Component {
@@ -13,14 +14,14 @@ class CommenterComponent extends React.Component {
 
         return(
             <div className='commenter'>
-                <span className='user-id'>
-                    <i className='fa fa-user-circle' />
-                    <div>
-                        {userId}
-                    </div>
-                </span>
+                <div className='user-id-container'>
+                    <UserIdComponent userId={userId}/>
+                </div>
                 <span className='comment-count'>
-                    {commentCount}
+                    <div>
+                        {commentCount}
+                    </div>
+                    <i className='fa fa-comments-o'/>
                 </span>
             </div>
         );

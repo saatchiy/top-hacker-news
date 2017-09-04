@@ -88,13 +88,6 @@ class StoryActionManager {
 
         this._logTotalCommentCount(stories);
 
-        // let story = null;
-        // for(let stry of stories) {
-        //     if(stry.getCommentsCount() > 90) {
-        //         story = stry;
-        //         break;
-        //     }
-        // }
         this._internalLoadComments(ids, comments);
     }
 
@@ -166,11 +159,11 @@ class StoryActionManager {
      * @memberof StoryActionManager
      */
     _loadItem(id) {
-        console.log(CLASS_NAME, 'loading item:', id);
+        //console.log(CLASS_NAME, 'loading item:', id);
 
         return new Promise((resolve, reject) => {
             Comm.executeCall(new GetItemCall(id)).then((itemJSON) => {
-                console.log(CLASS_NAME, 'loaded successfully. Item:', id);
+                //console.log(CLASS_NAME, 'loaded successfully. Item:', id);
                 resolve(itemJSON);
             }).catch((error) => {
                 console.error(CLASS_NAME, error);

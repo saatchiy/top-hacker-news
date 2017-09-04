@@ -15,9 +15,12 @@
 // Home
 @import '../views/components/home/HeaderComponent';
 
+// Common components
+@import '../views/components/common/UserIdComponent';
+@import '../views/components/common/RefreshButtonComponent';
+
 // Top Stories
 @import '../views/components/topstories/TopStoriesComponent';
-@import '../views/components/topstories/RefreshButtonComponent';
 
 // Top Commenters
 @import '../views/components/topcommenters/TopCommentersComponent';

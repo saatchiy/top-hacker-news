@@ -1,6 +1,6 @@
 import * as React from 'react';
 import StoryComponent from 'gui/views/components/story/StoryComponent';
-import RefreshButtonComponent from 'gui/views/components/topstories/RefreshButtonComponent';
+import RefreshButtonComponent from 'gui/views/components/common/RefreshButtonComponent';
 
 
 class TopStoriesComponent extends React.Component {

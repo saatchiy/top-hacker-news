@@ -5,14 +5,16 @@ import Story from 'core/data/Story';
 import Commenter from 'core/data/Commenter';
 
 
-const NUMBER_OF_TOP_STORIES = 6;
+const NUMBER_OF_TOP_STORIES = 30;
 const NUMBER_OF_TOP_COMMENTERS = 10;
 const CLASS_NAME = 'StoreStore:';
 
 class StoryStore extends EventEmitter {
     
-    constructor(dispatcher, storyActionManager) {
+    constructor(dispatcher, storyActionManager, stores) {
         super();
+        this._dispatcher = dispatcher;
+        this._stores = stores;
         this._dispatchToken = dispatcher.register(this._handleActions.bind(this));
         this._storyActionManager = storyActionManager;
         this._topIDs = [];
@@ -25,8 +27,11 @@ class StoryStore extends EventEmitter {
     }
 
     _handleActions(payload) {
+        let guiDispatchToken = this._stores.getGUIStore().getStoreDispatchToken();
+
         switch(payload.getActionType()) {
             case ActionTypes.GET_TOP_STORIES:
+                this._dispatcher.waitFor([guiDispatchToken]);
                 this._logAction(payload);
                 this._loadTopStoryIDs(payload);
                 break;
@@ -52,6 +57,7 @@ class StoryStore extends EventEmitter {
     _flush() {
         this._topIDs = [];
         this._stories = new Map();
+        this._topCommenters = [];
     }
 
     _loadTopStoryIDs(payload) {
@@ -110,10 +116,12 @@ class StoryStore extends EventEmitter {
 
         for(let comment of comments) {
             let userId = comment.getAuthor();
-            if(commentersMap.has(userId)) {
-                commentersMap.get(userId).incrementCommentCount();
-            } else {
-                commentersMap.set(userId, new Commenter(userId));
+            if(userId) {
+                if(commentersMap.has(userId)) {
+                    commentersMap.get(userId).incrementCommentCount();
+                } else {
+                    commentersMap.set(userId, new Commenter(userId));
+                }
             }
         }
 

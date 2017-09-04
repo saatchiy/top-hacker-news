@@ -1,5 +1,5 @@
 import * as React from 'react';
-import RefreshButtonComponent from 'gui/views/components/topstories/RefreshButtonComponent';
+import RefreshButtonComponent from 'gui/views/components/common/RefreshButtonComponent';
 import CommenterComponent from 'gui/views/components/topcommenters/CommenterComponent';
 
 
