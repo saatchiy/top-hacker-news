@@ -8,6 +8,7 @@ import StoriesLoadedActionPayload from 'core/dataretriever/actions/reactions/Sto
 import CommentsLoadedActionPayload from 'core/dataretriever/actions/reactions/CommentsLoadedActionPayload';
 
 import Comment from 'core/data/Comment';
+import * as ItemTypes from 'core/data/ItemTypes';
 
 const CLASS_NAME = 'StoryActionManager:';
 
@@ -81,41 +82,80 @@ class StoryActionManager {
      * @memberof StoryActionManager
      */
     loadComments(stories) {
-        let promises = [] // An array that keeps all the promises of loading comments
-        let comments = [] // An array that holds all the created comment objects
 
-        let story = null;
-        for(let stry of stories) {
-            if(stry.getCommentsCount() > 90) {
-                story = stry;
-                break;
-            }
+        let ids = this._extractCommentIdsFromItems(stories);
+        let comments = [];
+
+        this._logTotalCommentCount(stories);
+
+        // let story = null;
+        // for(let stry of stories) {
+        //     if(stry.getCommentsCount() > 90) {
+        //         story = stry;
+        //         break;
+        //     }
+        // }
+        this._internalLoadComments(ids, comments);
+    }
+
+    /**
+     * Recursively loads all of the comments for the specified item ids
+     * After loading, dispatches an action to the store
+     * 
+     * @param {any} ids 
+     * @param {any} comments 
+     * @memberof StoryActionManager
+     */
+    _internalLoadComments(ids, comments) {
+        let promises = []; // An array that keeps all the promises of loading comments on each level in the hierarchy
+        let loadedComments = []; // Array of comments which will be loaded
+
+        for(let id of ids) {
+            // Loading each comment
+            promises.push(this._loadItem(id).then((itemJSON) => {
+                if(itemJSON.type === ItemTypes.COMMENT) {
+                    let comment = new Comment(itemJSON);
+                    loadedComments.push(comment);
+                }
+            }));
         }
-        this._internalLoadComments([story], promises, comments);
 
+        // Does not tolerate errors, fails with the first error 
+        // TODO: This could be changed so that we can tolerate some comment loading failures
         Promise.all(promises).then(() => {
-            console.log(CLASS_NAME, 'comments loaded');
-            console.log(CLASS_NAME, 'loaded comments count:', comments.length);
-            this._dispatcher.dispatch(new CommentsLoadedActionPayload(comments));
+            let loadedCommentIds = this._extractCommentIdsFromItems(loadedComments);
+            Array.prototype.push.apply(comments, loadedComments);
+            if(loadedCommentIds.length > 0) {
+                this._internalLoadComments(loadedCommentIds, comments);
+            } else {
+                console.log(CLASS_NAME, 'all comments loaded');
+                console.log(CLASS_NAME, 'loaded comments count:', comments.length);
+                this._dispatcher.dispatch(new CommentsLoadedActionPayload(comments));
+            }
         }).catch((error) => {
             console.log(CLASS_NAME, 'failed to load all the comments');
             this._dispatcher.dispatch(new ErrorOccurredActionPayload(error));
         });
     }
 
-    _internalLoadComments(items, promises, comments) {
+    _extractCommentIdsFromItems(items) {
+        let ids = [];
+
         for(let item of items) {
-            // getting ids of each comment
-            let ids = item.getCommentsIds();
-            for(let id of ids) {
-                // Loading each comment
-                promises.push(this._loadItem(id).then((commentJSON) => {
-                    let comment = new Comment(commentJSON);
-                    comments.push(comment);
-                    this._internalLoadComments([comment], promises, comments);
-                }));
-            }
+            Array.prototype.push.apply(ids, item.getCommentIds());
         }
+
+        return ids;
+    }
+
+    _logTotalCommentCount(stories) {
+        let totalCount = 0;
+
+        for(let story of stories) {
+            totalCount += story.getCommentsCount();        ;
+        }
+
+        console.log(CLASS_NAME, 'total comments:', totalCount);
     }
 
     /**
@@ -137,10 +177,6 @@ class StoryActionManager {
                 reject(error);
             })
         });
-    }
-
-    waitForAllPromises() {
-
     }
 }
 

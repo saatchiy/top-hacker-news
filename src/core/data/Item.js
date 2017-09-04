@@ -13,7 +13,7 @@ class Item {
         this._deleted = itemJSON.deleted;
         this._authorId = itemJSON.by;
         this._time = new Date(itemJSON.time);
-        this._commentsIds = itemJSON.kids;
+        this._commentIds = itemJSON.kids;
         this._dead = itemJSON.dead;
     }
 
@@ -37,9 +37,9 @@ class Item {
         return this._time.toLocaleString();
     }
 
-    getCommentsIds() {
-        if(this._commentsIds) {
-            return this._commentsIds;
+    getCommentIds() {
+        if(this._commentIds) {
+            return this._commentIds;
         }
         
         return [];

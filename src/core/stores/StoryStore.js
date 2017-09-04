@@ -5,7 +5,7 @@ import Story from 'core/data/Story';
 import Commenter from 'core/data/Commenter';
 
 
-const NUMBER_OF_TOP_STORIES = 30;
+const NUMBER_OF_TOP_STORIES = 6;
 const NUMBER_OF_TOP_COMMENTERS = 10;
 const CLASS_NAME = 'StoreStore:';
 
@@ -75,6 +75,12 @@ class StoryStore extends EventEmitter {
         this._storyActionManager.loadStories(this.topIDs.slice(0, NUMBER_OF_TOP_STORIES));
     }
 
+    /**
+     * Loads comments of top stories after they are loaded
+     * 
+     * @param {StoriesLoadedActionPayload} payload 
+     * @memberof StoryStore
+     */
     _handleStoriesLoaded(payload) {
         let storiesJSON = payload.getStoriesJSON();
         
@@ -86,9 +92,17 @@ class StoryStore extends EventEmitter {
         console.log(CLASS_NAME, 'emitting to containers: top stories loaded');
         this._emitTopStoriesLoaded();
 
+        // Finding top commenters. First we load comments of top stories
         this._storyActionManager.loadComments(Array.from(this._stories.values()));
     }
 
+    /**
+     * Selects top commenters based on the total number of comments
+     * they submitted on top stories
+     * 
+     * @param {CommentsLoadedActionPayload} payload 
+     * @memberof StoryStore
+     */
     _handleCommentsLoaded(payload) {
         let comments = payload.getComments();
 
@@ -107,7 +121,7 @@ class StoryStore extends EventEmitter {
 
         // Sorting commenters list based on the total number of comments
         commentersList.sort((a, b) => {
-            return a.getCommentCount() > b.getCommentCount();
+            return b.getCommentCount() - a.getCommentCount();
         });
 
         // Picking top commenters

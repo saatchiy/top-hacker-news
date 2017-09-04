@@ -1,5 +1,6 @@
 import * as React from 'react';
 import RefreshButtonComponent from 'gui/views/components/topstories/RefreshButtonComponent';
+import CommenterComponent from 'gui/views/components/topcommenters/CommenterComponent';
 
 
 class TopCommentersComponent extends React.Component {
@@ -16,7 +17,7 @@ class TopCommentersComponent extends React.Component {
         if(commenters) {
             let commenterComponents = commenters.map((commenter) => {
                 return(
-                    <CommenterComponent commenter={commenter}/>
+                    <CommenterComponent key={commenter.getAuthor()} commenter={commenter}/>
                 );
             });
 
