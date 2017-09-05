@@ -25,14 +25,12 @@ module.exports = {
 		// Add '.js' and '.jsx' as resolvable extensions.
 		extensions: [".js", ".jsx"],
 
-		// Specify paths for modules so that we can use complete paths to files in the src folder,
-		// eg. base/cms/CMSPath, instead of having to use relative paths like '../../../../../base/cms/CMSPath'
+		// Specify paths for modules so that we can use complete paths to files in the src folder
 		modules: [
 			"src",
 			"node_modules"
 		],
 
-		// Set a webpack alias for 'src', so that we can import paths like 'src/base/cms/CMSPath'
 		alias: {
             src: commonPaths.srcPath,
             core: commonPaths.corePath,
@@ -45,7 +43,7 @@ module.exports = {
         hot: true, // enable HMR on the server
         contentBase: commonPaths.contentBasePath, // match the output path
         publicPath: '/', // match the output `publicPath`
-        host:"0.0.0.0", // Enable to integrate with Docker
+        //host:"0.0.0.0", // Enable to integrate with Docker
         port: 3000,
         historyApiFallback: true,
         // All the stats options here: https://webpack.js.org/configuration/stats/

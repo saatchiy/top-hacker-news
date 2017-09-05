@@ -24,6 +24,23 @@ module.exports = {
     // You can exclude the *.map files from the build during deployment.
     devtool: 'source-map',
 
+    resolve: {
+		// Add '.js' and '.jsx' as resolvable extensions.
+		extensions: [".js", ".jsx"],
+
+		// Specify paths for modules so that we can use complete paths to files in the src folder
+		modules: [
+			"src",
+			"node_modules"
+		],
+
+		alias: {
+            src: commonPaths.srcPath,
+            core: commonPaths.corePath,
+            gui: commonPaths.guiPath
+		}
+	},
+
     plugins: [
         // Makes some environment variables available in index.html.
         // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
@@ -56,7 +73,7 @@ module.exports = {
             '__DEVTOOLS__': false                           // Doesn´t have effect on my example
         }),
         new ExtractTextPlugin({
-            filename: 'static/css/main.css',
+            filename: 'main.css',
             allChunks: true
         }),
         // Plugings for optimizing size and performance.
@@ -106,7 +123,11 @@ module.exports = {
                 test: /\.jsx$/,
                 use: [
                     {
-                        loader: 'babel-loader'
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['es2015']
+                        }
+
                     }
                 ],
                 include: commonPaths.srcPath  // Use include instead exclude to improve build performance
